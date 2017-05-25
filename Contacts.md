@@ -1,4 +1,4 @@
-﻿### Author ###
+### Author ###
 
 [Howard S. Edidin ](mailto:hedidin@edidingroup.net)
 Senior Healthcare Azure Architect
