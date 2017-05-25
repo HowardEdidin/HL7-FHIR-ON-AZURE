@@ -4,7 +4,7 @@ HL7 FHIR ON AZURE
 [Contacts](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Contacts.md)
 
 
-[Resources](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Resources.md)
+[Resources](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/tree/master/Resources)
 
 
 [Sources](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Sources.md)
