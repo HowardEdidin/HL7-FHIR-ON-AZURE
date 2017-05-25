@@ -7,9 +7,10 @@ HL7 FHIR ON AZURE
 [Resources](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/tree/master/Resources)
 
 
-[Sources](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Sources.md)
+[Sources](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/tree/master/Sources)
 
 
-[Samples and SDK ](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Samples%20and%20SDK.md)
+[Samples and SDK ](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/tree/master/Samples%20and%20SDK)
 
-[Case Studies](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Case%20Studies.md)
+
+[Case Studies](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/tree/master/Case%20Studies)
