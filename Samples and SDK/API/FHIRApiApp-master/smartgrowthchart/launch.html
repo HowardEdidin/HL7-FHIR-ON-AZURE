@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Growth Chart SMART Application</title>
+    <script src="node_modules/fhirclient/fhir-client.js"></script>
+    <script>
+        FHIR.oauth2.authorize({
+        "client" : {"client_id": "a6b9c2e4-fe50-4576-b99a-4a98f2cb3ed0","scope":"patient/*.read"},
+        "client_id": "a6b9c2e4-fe50-4576-b99a-4a98f2cb3ed0",
+        "response_type": "token",
+        "scope":  "patient/*.read"
+      });
+    </script>
+  </head>
+  Loading...
+</html>

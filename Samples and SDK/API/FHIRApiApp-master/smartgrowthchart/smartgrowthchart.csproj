@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{27E7CEAF-CE45-4A61-B2DE-12B0619EF2BB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>smartgrowthchart</RootNamespace>
+    <AssemblyName>smartgrowthchart</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ADLogin.html" />
+    <Content Include="css\about-dialog.css" />
+    <Content Include="css\gc-pview.css" />
+    <Content Include="css\gc-pview2.css" />
+    <Content Include="css\gc-screen.css" />
+    <Content Include="css\preferences-editor.css" />
+    <Content Include="css\print.css" />
+    <Content Include="css\reset.css" />
+    <Content Include="css\style.css" />
+    <Content Include="fixtures\GCReferenceSources.txt" />
+    <Content Include="img\add-chart-btn-right.png" />
+    <Content Include="img\azure.png" />
+    <Content Include="img\backgroung.png" />
+    <Content Include="img\close-chart-btn-right.png" />
+    <Content Include="img\close-dialog-btn.png" />
+    <Content Include="img\close.png" />
+    <Content Include="img\dash-dark.png" />
+    <Content Include="img\dash-white.png" />
+    <Content Include="img\gcdemo.png" />
+    <Content Include="img\icon.png" />
+    <Content Include="img\icons.fw.png" />
+    <Content Include="img\icons.png" />
+    <Content Include="img\info.fw.png" />
+    <Content Include="img\info.png" />
+    <Content Include="img\mock\mini-chart.png" />
+    <Content Include="img\mock\panel.png" />
+    <Content Include="img\mock\toggle-view1.png" />
+    <Content Include="img\mock\toggle-view2.png" />
+    <Content Include="img\mock\top-bar1.png" />
+    <Content Include="img\mock\top-bar2.png" />
+    <Content Include="img\mode-bg.png" />
+    <Content Include="img\page.png" />
+    <Content Include="img\print.png" />
+    <Content Include="img\problem-pattern-all.fw.png" />
+    <Content Include="img\problem-pattern-blue.png" />
+    <Content Include="img\problem-pattern-green.png" />
+    <Content Include="img\problem-pattern-orange.png" />
+    <Content Include="img\pview\avatar-female.png" />
+    <Content Include="img\pview\avatar-male.png" />
+    <Content Include="img\pview\blueBabyHeightImage.png" />
+    <Content Include="img\pview\blueChildHeightImage.png" />
+    <Content Include="img\pview\blueFatherHeightImage.png" />
+    <Content Include="img\pview\blueTeenHeightImage.png" />
+    <Content Include="img\pview\blueToddlerHeightImage.png" />
+    <Content Include="img\pview\bmi-icon.png" />
+    <Content Include="img\pview\fatherHeightImage.png" />
+    <Content Include="img\pview\fatherHeightImageForeign.png" />
+    <Content Include="img\pview\HeadCircumferenceIcon.png" />
+    <Content Include="img\pview\LengthIcon.png" />
+    <Content Include="img\pview\motherHeightImage.png" />
+    <Content Include="img\pview\motherHeightImageForeign.png" />
+    <Content Include="img\pview\pinkBabyHeightImage.png" />
+    <Content Include="img\pview\pinkChildHeightImage.png" />
+    <Content Include="img\pview\pinkMotherHeightImage.png" />
+    <Content Include="img\pview\pinkTeenHeightImage.png" />
+    <Content Include="img\pview\pinkToddlerHeightImage.png" />
+    <Content Include="img\pview\WeightIcon.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs HEALTHY active.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs HEALTHY.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs OBESE active.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs OBESE.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs OVERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs OVERWEIGHT.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs UNDERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Female 12-19yrs UNDERWEIGHT.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs HEALTHY active.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs HEALTHY.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs OBESE active.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs OBESE.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs OVERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs OVERWEIGHT.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs UNDERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Female 4-12yrs UNDERWEIGHT.png" />
+    <Content Include="img\pview\weights\Infant HEALTHY active.png" />
+    <Content Include="img\pview\weights\Infant HEALTHY.png" />
+    <Content Include="img\pview\weights\Infant OBESE active.png" />
+    <Content Include="img\pview\weights\Infant OBESE.png" />
+    <Content Include="img\pview\weights\Infant OVERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Infant OVERWEIGHT.png" />
+    <Content Include="img\pview\weights\Infant UNDERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Infant UNDERWEIGHT.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs HEALTHY active.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs HEALTHY.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs OBESE active.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs OBESE.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs OVERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs OVERWEIGHT.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs UNDERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Male 12-19yrs UNDERWEIGHT.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs HEALTHY active.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs HEALTHY.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs OBESE active.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs OBESE.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs OVERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs OVERWEIGHT.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs UNDERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Male 4-12yrs UNDERWEIGHT.png" />
+    <Content Include="img\pview\weights\Toddler HEALTHY active.png" />
+    <Content Include="img\pview\weights\Toddler HEALTHY.png" />
+    <Content Include="img\pview\weights\Toddler OBESE active.png" />
+    <Content Include="img\pview\weights\Toddler OBESE.png" />
+    <Content Include="img\pview\weights\Toddler OVERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Toddler OVERWEIGHT.png" />
+    <Content Include="img\pview\weights\Toddler UNDERWEIGHT active.png" />
+    <Content Include="img\pview\weights\Toddler UNDERWEIGHT.png" />
+    <Content Include="img\smart-logo-small.png" />
+    <Content Include="img\spinner.gif" />
+    <Content Include="img\spinner2.gif" />
+    <Content Include="img\tab-sprite.png" />
+    <Content Include="img\tabs\tabs.fw.png" />
+    <Content Include="img\time-tabs-sprite.png" />
+    <Content Include="img\transparent.gif" />
+    <Content Include="img\trash\CursorZoomIn.bmp" />
+    <Content Include="img\trash\gear.png" />
+    <Content Include="img\trash\patient-icon.png" />
+    <Content Include="img\trash\PlacHholderAvatar.png" />
+    <Content Include="img\trash\settings-icon.png" />
+    <Content Include="img\view-mode.png" />
+    <Content Include="js\about-dialog.js" />
+    <Content Include="js\chart-pane.js" />
+    <Content Include="js\charts\body-mass-index-chart.js" />
+    <Content Include="js\charts\chart-stack.js" />
+    <Content Include="js\charts\chart.js" />
+    <Content Include="js\charts\head-chart.js" />
+    <Content Include="js\charts\length-chart.js" />
+    <Content Include="js\charts\mini_charts.js" />
+    <Content Include="js\charts\percentile-chart.js" />
+    <Content Include="js\charts\weight-chart.js" />
+    <Content Include="js\gc-app.js" />
+    <Content Include="js\gc-boneage-calculator.js" />
+    <Content Include="js\gc-chart-config.js" />
+    <Content Include="js\gc-chart.js" />
+    <Content Include="js\gc-charts-data.js" />
+    <Content Include="js\gc-grid-view.js" />
+    <Content Include="js\gc-model.js" />
+    <Content Include="js\gc-parental-view.js" />
+    <Content Include="js\gc-pointset.js" />
+    <Content Include="js\gc-sample-patients.js" />
+    <Content Include="js\gc-smart-data.js" />
+    <Content Include="js\gc-statistics.js" />
+    <Content Include="js\gc-style-generator.js" />
+    <Content Include="js\gc-translations.js" />
+    <Content Include="js\polyfills.js" />
+    <Content Include="js\print2.js" />
+    <Content Include="js\settings-editor.js" />
+    <Content Include="js\util.js" />
+    <Content Include="lib\jquery-1.8.2.js" />
+    <Content Include="lib\jquery-ui-1.8.14.custom.min.js" />
+    <Content Include="lib\jquery-ui-1.9.1.js" />
+    <Content Include="lib\jquery.js" />
+    <Content Include="lib\raphael.js" />
+    <Content Include="lib\xdate.js" />
+    <Content Include="menu.html" />
+    <Content Include="packages.config" />
+    <Content Include=".eslintrc" />
+    <Content Include=".gitignore" />
+    <Content Include="LICENSE" />
+    <Content Include="package.json" />
+    <Content Include="css\style.less" />
+    <Content Include="fixtures\sample-patient.json" />
+    <None Include="Properties\PublishProfiles\smartgrowthchart.pubxml" />
+    <Content Include="README.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="about-dialog.html" />
+    <Content Include="add_edit_dataentry.html" />
+    <Content Include="annotations.html" />
+    <Content Include="GCCurveDataJSON.txt" />
+    <Content Include="GCMenuItemsJSON.txt" />
+    <Content Include="index.html" />
+    <Content Include="launch.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="license.txt" />
+    <Content Include="load-fhir-data.js" />
+    <Content Include="node_modules\fhirclient\fhir-client.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="print-charts.html" />
+    <Content Include="select-patient.html" />
+    <Content Include="settings-editor.html" />
+    <Content Include="tests\index.html" />
+    <Content Include="tests\resources\qunit.css" />
+    <Content Include="tests\resources\qunit.js" />
+    <Content Include="tests\test-pointset-clip.html" />
+    <Content Include="tests\test-pointset-smoothing.html" />
+    <Content Include="tests\test-pointset.js" />
+    <Content Include="tests\test-utils.js" />
+    <Content Include="themes\custom-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_glass_75_ddecee_1x400.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_glass_85_d4e3e5_1x400.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_gloss-wave_55_c3dde0_500x100.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="themes\custom-theme\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="themes\custom-theme\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="themes\custom-theme\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3574</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3574/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

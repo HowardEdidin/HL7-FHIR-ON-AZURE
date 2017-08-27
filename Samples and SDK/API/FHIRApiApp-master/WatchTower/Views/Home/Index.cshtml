@@ -1,0 +1,349 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var fhirurl = System.Configuration.ConfigurationManager.AppSettings["FHIRServerAddress"];
+    string fhirserver = System.Configuration.ConfigurationManager.AppSettings["FHIRServerAddress"];
+    string fhirtenant = System.Configuration.ConfigurationManager.AppSettings["FHIRAADTenant"];
+    string fhirclientid = System.Configuration.ConfigurationManager.AppSettings["FHIRClientId"];
+    string fhirclientsecret = System.Configuration.ConfigurationManager.AppSettings["FHIRClientSecret"];
+    var clt  = new FHIRSupport.FHIRClient(fhirserver, fhirtenant, fhirclientid, fhirclientsecret);
+    string bearerToken = clt.BearerToken;
+}
+
+<div class="container-fluid">
+        <!--open container-->
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div id="main-section" class="col-xs-12 column">
+                <div id="main-section-header" class="row">
+                    <h2 id="data-monitor" class="col-xs-3">HL7 FHIR Data Monitor</h2>
+                    <div id="dateFilter" class="col-xs-9">
+                        <div class="period-wrapper">
+                            <label for="StartDate" class="select-period">Data from</label>
+                            <input id="start-date" />
+                            <span class="k-invalid-msg" data-for="StartDate"></span>
+                        </div>
+                        <div class="period-wrapper">
+                            <label for="EndDate" class="select-period">To</label>
+                            <input id="end-date" />
+                            <span class="k-invalid-msg" data-for="EndDate"></span>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+
+                <div class="main-section-content row" style="">
+
+                    <div id="patient-list" class="col col-xs-2">
+                        <h3>PATIENTS</h3>
+                        <div id="patients-list"></div>
+                    </div>
+                    <div id="patient-details-wrapper" class="col col-xs-10">
+                        <div id="patient-details" class="row">
+                            <div id="patient-about" class="col-xs-12 placeholder">
+                                <div class="row">
+                                    <div id="patientBio" class="col-xs-12 col-sm-4">
+                                     
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div id="vitals" class="col-xs-12">
+                                <h4>
+                                    Vitals/Test History
+                                </h4>
+                                <table class="history">
+                                    <tr>
+                                        <td class="spark" width="200px"><span id="pulse"></span></td>
+                                        <td class="value">Pulse</td>
+                                        <td class="spark" width="200px"><span id="weight"></span></td>
+                                        <td class="value">Weight</td>
+                                        <td class="spark" width="200px"><span id="glucose"></span></td>
+                                        <td class="value">Glucose</td>
+                                    </tr>
+                                   
+                                </table>
+                            </div>
+                            <div id="patientObservations" class="col-xs-12">
+                                <h3>Observations</h3>
+                                <div id="grid"></div>
+                             </div>
+                         </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <!--close main column-->
+        </div>
+        <!--close row-->
+    </div>
+    <!--close container-->
+
+    <script>
+        var timer = null;
+
+        $(document).ready(function () {
+            initWidgets();
+        });
+        $("[data-toggle=offcanvas]").click(function () {
+            $(".row-offcanvas").toggleClass("active");
+        });
+        function initWidgets() {
+            clearInterval(timer);
+            var dtn = new Date();
+            var dago = new Date();
+            dago.setDate(dtn.getDate() - 2);
+
+            $("#start-date").kendoDatePicker({
+                value: dago,
+                change: onCriteriaChange
+            })
+
+            $("#end-date").kendoDatePicker({
+                value: dtn,
+                change: onCriteriaChange
+            })
+
+            $("#patients-list").kendoListView({
+                template: $('#patientItemTemplate').html(),
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "@Url.Content(fhirurl + "/Patient")",
+                              dataType: "json",
+                              crossDomain: true,
+                              beforeSend: function (req) {
+                                  req.setRequestHeader('Authorization','Bearer @(bearerToken)');
+                              }
+                          }
+                      },
+                      schema: {
+                          data:"entry"
+                      },
+                      pageSize: 100
+
+                  },
+                  selectable: "single",
+                  dataBound: onListDataBound,
+                  change: onCriteriaChange
+              })
+
+
+              $('#patientBio').kendoTooltip({
+                  filter: "a",
+                  content: function(e){
+                      return e.target.find("span").text();
+                  }
+              })
+        }
+        function refreshGrid() {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                $("#grid").data("kendoGrid").dataSource.read();
+                $("#pulse").data("kendoSparkline").dataSource.read();
+                $("#weight").data("kendoSparkline").dataSource.read();
+                $("#glucose").data("kendoSparkline").dataSource.read();
+            }, 10000);
+        }
+        function onListDataBound(e) {
+            this.select($(".patient:first"));
+        }
+        function onGridDataBound(e) {
+           refreshGrid();
+        }
+        function onCriteriaChange() {
+            clearInterval(timer);
+            var patientList = $("#patients-list").data("kendoListView"),
+                patient = patientList.dataSource.getByUid(patientList.select().attr("data-uid")),
+                template = kendo.template($("#patientBioTemplate").html());
+            var stdate = $("#start-date").data('kendoDatePicker').value();
+            var dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: "@(fhirurl)/Observation?patient=" + patient.resource.id,
+                        dataType: "json",
+                        crossDomain: true,
+                        beforeSend: function (req) {
+                                  req.setRequestHeader('Authorization', 'Bearer @(bearerToken)');
+                        }
+
+                    }
+                },
+                schema: {
+                    parse: function (response) {
+                        var parsedData = [];
+                        for (var i = 0; i < response.entry.length; i++) {
+                            var r = response.entry[i];
+                            r.resource.effectiveDateTime = kendo.parseDate(r.resource.effectiveDateTime);
+                            parsedData.push(r);
+                        }
+                        return parsedData;
+                    }
+                },
+                filter: { field: "resource.effectiveDateTime", operator: "ge", value: stdate },
+                sortable: {
+                    mode: "single",
+                    allowUnsort: false
+                }
+            });
+                $("#patientBio").html(template(patient));
+                $("#alertBtn").on("click", function () {
+                    $.getJSON('api/gentoken/' + patient.resource.id, function (data) {
+                        kendo.alert("Your BOT access PIN is:" + data.token + "\r\nIt's valid for 48 hours");
+                    });
+
+                });
+                $("#grid").kendoGrid({
+                    columns: [{
+                        field: 'effectiveDateTime', title: 'Date/Time', template: "#= kendo.toString(resource.effectiveDateTime, 'MM/dd/yyyy HH:mm:ss') #", sortable: { initialDirection: "desc" }
+                    }, { field: 'resource.category[0].text', title: 'Category' }, { field: 'resource.code.text', title: 'Type' }, { field: 'resource.valueQuantity.value', title: 'Value' }, { field: 'resource.valueQuantity.unit', title: 'Units' }],
+                    dataSource: dataSource,
+                    height: 500,
+                    scrollable: true,
+                    selectable: true,
+                    noRecords:true,
+                    dataBound:onGridDataBound
+                });
+                var pulsedata = new kendo.data.DataSource(dataSource.options);
+                pulsedata.filter([{ field: "resource.effectiveDateTime", operator: "ge", value: stdate},{ field: "resource.code.coding[0].code", operator: "eq", value: "8867-4" }]);
+                $("#pulse").kendoSparkline({
+                    dataSource: pulsedata,
+                    valueAxis: {
+                        min: 40,
+                        max: 300,
+                        plotBands: [{
+                            from: 50,
+                            to: 95,
+                            color: "#5b8f00",
+                            opacity: 0.15
+                        }]
+                    },
+                    series: [{
+                        field: "resource.valueQuantity.value",
+                        color: "black"
+                    }]
+                });
+
+                var weightdata = new kendo.data.DataSource(dataSource.options);
+                weightdata.filter([{ field: "resource.effectiveDateTime", operator: "ge", value: stdate}, { field: "resource.code.coding[0].code", operator: "eq", value: "29463-7" }]);
+                $("#weight").kendoSparkline({
+                    dataSource:weightdata,
+                    series: [{
+                        field: "resource.valueQuantity.value",
+                        color: "black"
+
+                    }]
+                });
+                var glucdata = new kendo.data.DataSource(dataSource.options);
+                glucdata.filter([{ field: "resource.effectiveDateTime", operator: "ge", value: stdate },{ field: "resource.code.coding[0].code", operator: "eq", value: "2345-7" }]);
+                $("#glucose").kendoSparkline({
+                    dataSource: glucdata,
+                    valueAxis: {
+                        min: 20,
+                        max: 300,
+                        plotBands: [{
+                            from: 70,
+                            to: 140,
+                            color: "#5b8f00",
+                            opacity: 0.15
+                        }]
+                    },
+                    series: [{
+                        tooltip: {
+                            visible: true,
+                            template: "#= value # mg/dL"
+                        },
+                        field: "resource.valueQuantity.value",
+                        color: "black"
+                    }]
+                });
+
+        }
+
+
+    </script>
+     <script type="text/x-kendo-tmpl" id="patientItemTemplate">
+        <div class="patient">
+            <div class="patient-wrapper">
+                     <dl class="patient-list-details">
+                        <dt class="name">#:resource.name[0].text#</dt>
+                        <dd class="title">#:resource.birthDate#&nbsp;#:resource.gender#</dd>
+                   </dl>
+               </div>
+            </div>
+    </script>
+    <script type="text/x-kendo-tmpl" id="patientBioTemplate">
+        <div>
+            <h3>ABOUT</h3>
+               <dl class="patient-bio-details">
+                    <dt class="name">#:resource.name[0].text#</dt>
+                    <dd class="title">#:resource.birthDate#&nbsp;#:resource.gender#</dd>
+                    <dd class="phone"><span class="icon icon-mobile"></span>#:resource.telecom[0].value#</dd>
+                    <dd class="title"><button id="alertBtn" class="k-button">Generate PIN</button></dd>
+               </dl>
+        </div>
+    </script>
+<style>
+    .temperature, .conditioner {
+        margin: 0;
+        padding: 30px 0 0 0;
+    }
+
+    .history {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        .history td {
+            padding: 0;
+            vertical-align: bottom;
+        }
+
+            .history td.spark {
+                line-height: 30px;
+            }
+
+            .history td.value {
+                font-size: 1.6em;
+                font-weight: normal;
+                line-height: 20px;
+            }
+
+                .history td.value span {
+                    font-size: .5em;
+                    vertical-align: top;
+                    line-height: 30px;
+                }
+
+    .stats {
+        text-align: center;
+    }
+
+    .pie-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+        .pie-list li {
+            display: inline-block;
+            text-align: center;
+            width: 34px;
+            font-size: 10px;
+        }
+
+    #stats-mon,
+    #stats-tue,
+    #stats-wed,
+    #stats-thu,
+    #stats-fri,
+    #stats-sat,
+    #stats-sun {
+        display: block;
+        width: 34px;
+        line-height: 30px;
+    }
+
+    #temp-range {
+        width: 100%;
+        line-height: 30px;
+    }
+</style>

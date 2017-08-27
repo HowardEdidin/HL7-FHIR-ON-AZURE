@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.14/js/adal.min.js"></script>'
+    <script type="text/javascript">
+    var configOptions = {
+        tenant: "microsoft.onmicrosoft.com", // Optional by default, it sends common
+        clientId: "a6b9c2e4-fe50-4576-b99a-4a98f2cb3ed0",
+        postLogoutRedirectUri: window.location.origin,
+    }
+    window.authContext = new AuthenticationContext(configOptions);
+
+    var isCallback = authContext.isCallback(window.location.hash);
+    authContext.handleWindowCallback();
+
+    function getToken(){
+        authContext.acquireToken("https://smartgrowthchart.azurewebsites.net",function(error, token){
+            console.log(error);
+            console.log(token);
+        })
+    }
+    function login(){
+        authContext.login();
+    }
+    </script>
+</head>
+
+<body>
+    <a href="#" onclick="login();">login</a>
+    <a href="#" onclick="getToken()">access token</a>
+</body>
+
+</html>

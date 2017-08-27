@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26711.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHIR3APIApp", "FHIR3APIApp\FHIR3APIApp.csproj", "{9E362F61-26AC-4EEA-A7B6-BB6E1B3926C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHIRSchedulingBot", "FHIRSchedulingBot\FHIRSchedulingBot.csproj", "{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchTower", "WatchTower\WatchTower.csproj", "{FC78F2F7-E0EF-4182-99AD-3FF9939596A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHIRSupport", "FHIRSupport\FHIRSupport.csproj", "{F3692D74-3562-440C-A941-B5386E79430E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E362F61-26AC-4EEA-A7B6-BB6E1B3926C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E362F61-26AC-4EEA-A7B6-BB6E1B3926C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E362F61-26AC-4EEA-A7B6-BB6E1B3926C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E362F61-26AC-4EEA-A7B6-BB6E1B3926C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC78F2F7-E0EF-4182-99AD-3FF9939596A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC78F2F7-E0EF-4182-99AD-3FF9939596A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC78F2F7-E0EF-4182-99AD-3FF9939596A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC78F2F7-E0EF-4182-99AD-3FF9939596A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3692D74-3562-440C-A941-B5386E79430E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3692D74-3562-440C-A941-B5386E79430E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3692D74-3562-440C-A941-B5386E79430E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3692D74-3562-440C-A941-B5386E79430E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63C147D1-CA05-4E1C-8A73-B15EA2C81648}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8
+	EndGlobalSection
+EndGlobal

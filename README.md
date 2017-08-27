@@ -1,6 +1,8 @@
 HL7 FHIR ON AZURE
 =================
 
+Resources for the Microsoft HL7 FHIR on Azure Frameworks 
+
 [Contacts](https://github.com/HowardEdidin/HL7-FHIR-ON-AZURE/blob/master/Contacts.md)
 
 
