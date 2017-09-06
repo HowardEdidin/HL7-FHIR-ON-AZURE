@@ -1,0 +1,5 @@
+C:\Users\hse\Documents\Visual Studio 2017\Projects\HL7V2Connector\HL7V2Parser\bin\Debug\HL7V2Parser.dll
+C:\Users\hse\Documents\Visual Studio 2017\Projects\HL7V2Connector\HL7V2Parser\bin\Debug\HL7V2Parser.pdb
+C:\Users\hse\Documents\Visual Studio 2017\Projects\HL7V2Connector\HL7V2Parser\obj\Debug\HL7V2Parser.csproj.CoreCompileInputs.cache
+C:\Users\hse\Documents\Visual Studio 2017\Projects\HL7V2Connector\HL7V2Parser\obj\Debug\HL7V2Parser.dll
+C:\Users\hse\Documents\Visual Studio 2017\Projects\HL7V2Connector\HL7V2Parser\obj\Debug\HL7V2Parser.pdb
