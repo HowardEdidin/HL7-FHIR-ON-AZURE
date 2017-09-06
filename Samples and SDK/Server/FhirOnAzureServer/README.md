@@ -50,7 +50,7 @@ with your Cosmos DB Mongo Api connection string
 Step 3
 ------
 
-Open the FhirOnAzure `web.config`
+Open the FhirOnAzure `web.config`and add your application name.
 
  	<!--Use your Application name -->
     <add key="FHIR_ENDPOINT" value="http://XXXXXXXXX.azurewebsites.net/fhir" />
