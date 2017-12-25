@@ -325,61 +325,6 @@ namespace FhirOnAzure.Controllers
             return _fhirService.Document(key);
         }
 
-        // ============= Tag Interactions
-
-        /*
-        [HttpGet, Route("_tags")]
-        public TagList AllTags()
-        {
-            return service.TagsFromServer();
-        }
-
-        [HttpGet, Route("{type}/_tags")]
-        public TagList ResourceTags(string type)
-        {
-            return service.TagsFromResource(type);
-        }
-
-        [HttpGet, Route("{type}/{id}/_tags")]
-        public TagList InstanceTags(string type, string id)
-        {
-            return service.TagsFromInstance(type, id);
-        }
-
-        [HttpGet, Route("{type}/{id}/_history/{vid}/_tags")]
-        public HttpResponseMessage HistoryTags(string type, string id, string vid)
-        {
-            TagList tags = service.TagsFromHistory(type, id, vid);
-            return Request.CreateResponse(HttpStatusCode.OK, tags);
-        }
-
-        [HttpPost, Route("{type}/{id}/_tags")]
-        public HttpResponseMessage AffixTag(string type, string id, TagList taglist)
-        {
-            service.AffixTags(type, id, taglist != null ? taglist.Category : null);
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        [HttpPost, Route("{type}/{id}/_history/{vid}/_tags")]
-        public HttpResponseMessage AffixTag(string type, string id, string vid, TagList taglist)
-        {
-            service.AffixTags(type, id, vid, taglist != null ? taglist.Category : null);
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        [HttpPost, Route("{type}/{id}/_tags/_delete")]
-        public HttpResponseMessage DeleteTags(string type, string id, TagList taglist)
-        {
-            service.RemoveTags(type, id, taglist != null ? taglist.Category : null);
-            return Request.CreateResponse(HttpStatusCode.NoContent);
-        }
-
-        [HttpPost, Route("{type}/{id}/_history/{vid}/_tags/_delete")]
-        public HttpResponseMessage DeleteTags(string type, string id, string vid, TagList taglist)
-        {
-            service.RemoveTags(type, id, vid, taglist != null ? taglist.Category : null);
-            return Request.CreateResponse(HttpStatusCode.NoContent);
-        }
-        */
+      
     }
 }
