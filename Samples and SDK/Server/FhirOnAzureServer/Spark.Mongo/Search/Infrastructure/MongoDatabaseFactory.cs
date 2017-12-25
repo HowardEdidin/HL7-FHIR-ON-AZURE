@@ -50,8 +50,9 @@ namespace FhirOnAzure.Store.Mongo
 
         private static MongoDatabase CreateMongoDatabase()
         {
+            // Use the connection string for you Cosmos DB Account
             const string connectionString =
-                @"mongodb://mongofhir:2sqm6y5HN5e4yoPhCRMSUUKxlANMgJPX91L52vstD6PGxr2zlFYBHanq6bkZHtcTipZ1TRvytSxY5ZMriLTjKQ==@mongofhir.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                @"mongodb://mongofhir:XXXXXXXXXXX==@XXXXXXX.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 
             var settings = MongoClientSettings.FromUrl(
                 new MongoUrl(connectionString)
