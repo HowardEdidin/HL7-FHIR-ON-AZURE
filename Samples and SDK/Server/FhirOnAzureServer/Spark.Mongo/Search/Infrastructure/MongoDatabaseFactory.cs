@@ -60,10 +60,8 @@ namespace FhirOnAzure.Store.Mongo
                 new SslSettings {EnabledSslProtocols = SslProtocols.Tls12};
             var mongoClient = new MongoClient(settings);
 
-
-#pragma warning disable 618
             return mongoClient.GetServer().GetDatabase("admin");
-#pragma warning restore 618
+
         }
     }
 }
